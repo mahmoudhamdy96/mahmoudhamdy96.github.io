@@ -1,0 +1,339 @@
+<title>Mahmoud Hamdy Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Mahmoud Hamdy, Data Analyst. Power BI, DAX, SQL and Excel dashboards on HR attrition, sales profitability and customer churn.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: single column, left-aligned. Hero, then three case studies (screenshots first, findings beside actions), then skills and contact. */
+:root{
+  --bg:#F5F7FA; --surface:#FFFFFF; --ink:#0E1A2B; --muted:#566478; --line:#DCE2EA; --accent:#0B7480; --accent-ink:#FFFFFF; --soft:#E6F2F3;
+  --font-display:"Space Grotesk","Segoe UI",system-ui,sans-serif;
+  --font-body:"Inter","Segoe UI",system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#0B121C;--surface:#111B28;--ink:#E6EDF5;--muted:#93A1B3;--line:#223044;--accent:#4FC3CC;--accent-ink:#06222A;--soft:#12303A;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#0B121C;--surface:#111B28;--ink:#E6EDF5;--muted:#93A1B3;--line:#223044;--accent:#4FC3CC;--accent-ink:#06222A;--soft:#12303A;color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.6;
+  padding-block:0;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1040px;margin-inline:auto}
+h1,h2,h3{font-family:var(--font-display);line-height:1.15;margin:0;text-wrap:balance}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.label{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* top bar */
+.bar{display:flex;gap:20px;justify-content:space-between;align-items:center;padding-block:18px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.bar strong{font-family:var(--font-display);font-size:17px}
+.bar nav{display:flex;gap:20px;flex-wrap:wrap}
+.bar nav a{color:var(--muted);text-decoration:none;font-size:14px}
+.bar nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{padding-block:64px 56px;display:grid;gap:22px;max-width:780px}
+.hero h1{font-size:clamp(38px,7vw,64px);letter-spacing:-.02em}
+.hero .role{font-family:var(--font-mono);font-size:14px;color:var(--accent);letter-spacing:.04em}
+.hero p{margin:0;font-size:18px;color:var(--muted);max-width:62ch}
+.cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:6px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:500 14px var(--font-body);text-decoration:none;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.meta{display:flex;gap:8px 22px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+
+/* sections */
+section{padding-block:56px;border-top:1px solid var(--line)}
+.sec-head{display:grid;gap:6px;margin-bottom:34px}
+.sec-head h2{font-size:clamp(26px,4vw,34px)}
+.sec-head p{margin:0;color:var(--muted);max-width:60ch}
+
+/* case study */
+.case{display:grid;gap:22px;margin-bottom:72px}
+.case:last-child{margin-bottom:0}
+.case-top{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;align-items:flex-end}
+.case h3{font-size:clamp(22px,3.4vw,28px)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.chip{font-family:var(--font-mono);font-size:12px;padding:3px 9px;border-radius:999px;background:var(--soft);color:var(--accent)}
+.case-links{display:flex;gap:10px;flex-wrap:wrap}
+.case-links .btn{padding:8px 14px}
+.shots{display:grid;gap:16px;grid-template-columns:1fr}
+.shots.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.shot{margin:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface)}
+.shot button{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in}
+.shot img{display:block;width:100%;height:auto}
+.shot figcaption{padding:9px 14px;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+.body{display:grid;gap:36px;grid-template-columns:minmax(0,3fr) minmax(0,2fr)}
+.body h4{margin:0 0 14px;font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.finds{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.finds li{display:grid;grid-template-columns:minmax(96px,128px) minmax(0,1fr);gap:16px;padding-block:14px;border-top:1px solid var(--line);align-items:baseline}
+.finds li:first-child{border-top:0;padding-top:0}
+.fig{font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.01em;font-variant-numeric:tabular-nums;color:var(--accent)}
+.finds span{color:var(--ink)}
+.recs{margin:0;padding-left:20px;display:grid;gap:10px;color:var(--ink)}
+.build{margin-top:22px;font-size:14px;color:var(--muted)}
+
+/* skills */
+.skills{display:grid;gap:0}
+.skills div{display:grid;grid-template-columns:minmax(120px,190px) minmax(0,1fr);gap:16px;padding-block:14px;border-top:1px solid var(--line)}
+.skills div:first-child{border-top:0}
+.skills dt{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.skills dd{margin:0}
+.edu{display:grid;gap:18px;margin-top:34px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.edu p{margin:4px 0 0}
+
+/* contact */
+.contact{display:grid;gap:18px;max-width:620px}
+.contact p{margin:0;color:var(--muted)}
+.mail{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.mail code{font-family:var(--font-mono);font-size:15px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);user-select:all;overflow-wrap:anywhere}
+footer{padding-block:28px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+
+/* lightbox */
+dialog{border:0;padding:0;background:transparent;max-width:min(96vw,1400px);width:100%}
+dialog::backdrop{background:rgba(6,12,20,.82)}
+dialog img{width:100%;height:auto;display:block;border-radius:10px}
+dialog form{text-align:right;margin-bottom:8px}
+
+@media (max-width:820px){
+  .body{grid-template-columns:1fr;gap:30px}
+  .shots.two{grid-template-columns:1fr}
+  .hero{padding-block:44px 40px}
+  .finds li{grid-template-columns:1fr;gap:2px}
+  .skills div{grid-template-columns:1fr;gap:4px}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+</style>
+
+<div class="wrap">
+  <header class="bar">
+    <strong>Mahmoud Hamdy</strong>
+    <nav aria-label="Sections">
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <span class="role">DATA ANALYST</span>
+      <h1>Dashboards that tell a manager what to do next.</h1>
+      <p>I'm a data analyst with a business administration background. I clean raw data, model it, write DAX measures and build Power BI dashboards that answer a business question, then I state what I would change because of the answer.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">See the projects</a>
+        <a class="btn" data-link="linkedin" href="#" target="_blank" rel="noopener" hidden>LinkedIn</a>
+        <a class="btn" data-link="github" href="#" target="_blank" rel="noopener" hidden>GitHub</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+      <div class="meta"><span>Eastern Province, Saudi Arabia</span><span>Arabic (native) · English (professional)</span></div>
+    </div>
+
+    <section id="projects">
+      <div class="sec-head">
+        <span class="label">Selected work</span>
+        <h2>Three dashboards, three business questions</h2>
+        <p>Each one starts from a question a manager would ask, and ends with a recommendation. Select a screenshot to enlarge it.</p>
+      </div>
+
+      <!-- HR -->
+      <article class="case" id="hr">
+        <div class="case-top">
+          <div>
+            <h3>Why do employees leave, and what does it cost?</h3>
+            <div class="chips"><span class="chip">HR Attrition &amp; Cost Analysis</span><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Excel</span></div>
+          </div>
+          <div class="case-links">
+            <a class="btn" data-proj="hr" data-kind="live" href="#" target="_blank" rel="noopener" hidden>Live report</a>
+            <a class="btn" data-proj="hr" data-kind="repo" href="#" target="_blank" rel="noopener" hidden>Code on GitHub</a>
+            <a class="btn" data-proj="hr" data-kind="post" href="#" target="_blank" rel="noopener" hidden>LinkedIn post</a>
+          </div>
+        </div>
+        <div class="shots two">
+          <figure class="shot"><button type="button" data-zoom="images/hr-page-1-overview.jpg"><img src="images/hr-page-1-overview.jpg" alt="HR Executive Attrition and Cost Analysis dashboard showing 1.47K employees, 237 leavers, 16% attrition rate and $6.8M estimated cost" loading="lazy"></button><figcaption>Page 1: executive overview and cost</figcaption></figure>
+          <figure class="shot"><button type="button" data-zoom="images/hr-page-2-drivers.jpg"><img src="images/hr-page-2-drivers.jpg" alt="Attrition Drivers and Risk page showing attrition by overtime, marital status, years at company and income versus salary hike" loading="lazy"></button><figcaption>Page 2: attrition drivers and risk</figcaption></figure>
+        </div>
+        <div class="body">
+          <div>
+            <h4>What the data showed</h4>
+            <ul class="finds">
+              <li><b class="fig">30.5% vs 10.4%</b><span>Attrition for people working overtime against people who don't. Overtime staff are nearly 3 times as likely to leave.</span></li>
+              <li><b class="fig">$6.8M</b><span>Estimated cost of 237 leavers out of 1,470 employees (16%), about $28.7K per leaver.</span></li>
+              <li><b class="fig">40%</b><span>Attrition among Sales Representatives (33 of 83), the highest of any role. Laboratory Technicians follow at 24%.</span></li>
+              <li><b class="fig">112</b><span>Leavers aged 25 to 34, the largest age group. Attrition is also highest in the first year at the company (36%).</span></li>
+              <li><b class="fig">$2.56M</b><span>Cost attached to Sales Executives alone. Their rate is a moderate 17%, but the group is large, so the money lost is the highest of any role.</span></li>
+            </ul>
+          </div>
+          <div>
+            <h4>What I would do</h4>
+            <ol class="recs">
+              <li>Rebalance workload in the departments with heavy overtime to reduce burnout.</li>
+              <li>Add mentoring and clear career steps for employees aged 25 to 34.</li>
+              <li>Review pay and working conditions for Sales Representatives and Laboratory Technicians first.</li>
+            </ol>
+            <p class="build"><strong>How it was built:</strong> data cleaning and modeling, custom DAX for Attrition Rate, Estimated Attrition Cost and Cost per Employee, custom sort order for age brackets, dark-themed UI with page navigation and slicers.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sales -->
+      <article class="case" id="sales">
+        <div class="case-top">
+          <div>
+            <h3>Which products look strong on sales but lose margin?</h3>
+            <div class="chips"><span class="chip">Executive Sales &amp; Profit Overview</span><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Power Query</span></div>
+          </div>
+          <div class="case-links">
+            <a class="btn" data-proj="sales" data-kind="live" href="#" target="_blank" rel="noopener" hidden>Live report</a>
+            <a class="btn" data-proj="sales" data-kind="repo" href="#" target="_blank" rel="noopener" hidden>Code on GitHub</a>
+            <a class="btn" data-proj="sales" data-kind="post" href="#" target="_blank" rel="noopener" hidden>LinkedIn post</a>
+          </div>
+        </div>
+        <div class="shots">
+          <figure class="shot"><button type="button" data-zoom="images/sales-profit-overview.jpg"><img src="images/sales-profit-overview.jpg" alt="Dark mode Sales and Profit Overview dashboard with $2M total sales, 12.5% profit margin, $286K profit, a waterfall by segment, a category by segment margin matrix, profit and discount by sub-category, and a sales map by state" loading="lazy"></button><figcaption>One-page executive dashboard with region and segment slicers</figcaption></figure>
+        </div>
+        <div class="body">
+          <div>
+            <h4>What the data showed</h4>
+            <ul class="finds">
+              <li><b class="fig">$2M · 12.5%</b><span>Total sales and overall profit margin ($286K profit). The Consumer segment brings in $1.16M of the $2.3M.</span></li>
+              <li><b class="fig">17.4% / 17.0%</b><span>Margins for Technology and Office Supplies, healthy in every segment.</span></li>
+              <li><b class="fig">1.8%</b><span>Furniture margin in the Consumer segment. Furniture sells $742K but earns only $18K profit.</span></li>
+              <li><b class="fig">21–26%</b><span>Average discount on Bookcases and Tables, the steepest in the range. Tables lose $18K and Bookcases lose $3K.</span></li>
+            </ul>
+          </div>
+          <div>
+            <h4>What I would do</h4>
+            <ol class="recs">
+              <li>Cap discounts on Tables and Bookcases.</li>
+              <li>Look closely at Furniture pricing in the Consumer segment.</li>
+            </ol>
+            <p class="build"><strong>How it was built:</strong> Power Query cleaning, DAX measures written so profit margin stays correct in a single Category by Segment cell and in the grand total, a combo chart of discount against profit, and waterfall charts for KPI tracking.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Churn -->
+      <article class="case" id="churn">
+        <div class="case-top">
+          <div>
+            <h3>Why do loyal customers leave?</h3>
+            <div class="chips"><span class="chip">Customer Churn Insights</span><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Power Query</span></div>
+          </div>
+          <div class="case-links">
+            <a class="btn" data-proj="churn" data-kind="live" href="#" target="_blank" rel="noopener" hidden>Live report</a>
+            <a class="btn" data-proj="churn" data-kind="repo" href="#" target="_blank" rel="noopener" hidden>Code on GitHub</a>
+            <a class="btn" data-proj="churn" data-kind="post" href="#" target="_blank" rel="noopener" hidden>LinkedIn post</a>
+          </div>
+        </div>
+        <div class="shots two">
+          <figure class="shot"><button type="button" data-zoom="images/churn-page-1.jpg"><img src="images/churn-page-1.jpg" alt="Customer Churn Insights dashboard with 14% churn rate, 3K customers, $31.6K lost revenue, churn by state, by account length, by international plan and by customer service calls" loading="lazy"></button><figcaption>Page 1: churn rate and where it comes from</figcaption></figure>
+          <figure class="shot"><button type="button" data-zoom="images/churn-page-2.jpg"><img src="images/churn-page-2.jpg" alt="Second churn page comparing revenue, usage minutes and average service calls for active versus churned customers, with a table by state" loading="lazy"></button><figcaption>Page 2: active versus churned customers</figcaption></figure>
+        </div>
+        <div class="body">
+          <div>
+            <h4>What the data showed</h4>
+            <ul class="finds">
+              <li><b class="fig">14%</b><span>Overall churn: 483 of 3,333 customers left, taking about $31.6K in revenue with them.</span></li>
+              <li><b class="fig">46%</b><span>Churn at 4 service calls, against 10 to 13% at 0 to 3 calls. It reaches 61% at 5 calls. Customers who stayed averaged 1.45 calls, those who left 2.23.</span></li>
+              <li><b class="fig">17%</b><span>Churn among customers with the longest tenure (15 to 19), up from 13% for the newest group. Long-time customers are not safe.</span></li>
+              <li><b class="fig">26%</b><span>Churn in California and New Jersey, the highest of any state. Texas follows at 25%.</span></li>
+            </ul>
+          </div>
+          <div>
+            <h4>What I would do</h4>
+            <ol class="recs">
+              <li>Set an automatic alert when an account reaches 3 support calls, so the team acts before the 4-call jump.</li>
+              <li>Review pricing and service for the longest-standing customers.</li>
+              <li>Study service quality and competition in California and New Jersey.</li>
+            </ol>
+            <p class="build"><strong>How it was built:</strong> Power Query cleaning, DAX for churn rate and lost revenue, conditional formatting, and cross-filtering between visuals on a two-page report.</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="skills">
+      <div class="sec-head">
+        <span class="label">Toolkit</span>
+        <h2>Skills and background</h2>
+      </div>
+      <dl class="skills">
+        <div><dt>Analysis</dt><dd>Data cleaning, data modeling, KPI design, trend and driver analysis</dd></div>
+        <div><dt>Tools</dt><dd>Power BI, DAX, Power Query, SQL, Excel, Google Sheets</dd></div>
+        <div><dt>Dashboard design</dt><dd>Executive layouts, navigation between pages, slicers, conditional formatting, light and dark themes</dd></div>
+        <div><dt>Languages</dt><dd>Arabic (native), English (professional working proficiency)</dd></div>
+      </dl>
+      <div class="edu">
+        <div><span class="label">Certification</span><p><strong>Google Data Analytics Professional Certificate</strong><br>Coursera</p></div>
+        <div><span class="label">Education</span><p><strong>Business Administration</strong>, October Higher Institute for Engineering and Technology<br>Management, Marketing, Financial Accounting, Statistics, Economics</p></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact">
+        <div class="sec-head" style="margin-bottom:0">
+          <span class="label">Contact</span>
+          <h2>Looking for a data analyst role</h2>
+        </div>
+        <p>Open to junior and entry-level analyst roles in Saudi Arabia. Email is the quickest way to reach me.</p>
+        <div class="mail">
+          <code id="addr">Mahmoudhamdy.da@gmail.com</code>
+          <button class="btn primary" id="copy" type="button">Copy email</button>
+          <a class="btn" data-link="linkedin" href="#" target="_blank" rel="noopener" hidden>LinkedIn</a>
+          <a class="btn" data-link="github" href="#" target="_blank" rel="noopener" hidden>GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Mahmoud Hamdy · Data Analyst · Eastern Province, Saudi Arabia</footer>
+</div>
+
+<dialog id="lb" aria-label="Enlarged screenshot">
+  <form method="dialog"><button class="btn" value="close">Close</button></form>
+  <img id="lbimg" alt="">
+</dialog>
+
+<script>
+/* Fill these in. Leave a value empty and its button stays hidden. */
+var CONFIG = {
+  linkedin: "https://www.linkedin.com/in/mahmoud-hamdy-473732417",
+  github:   "https://github.com/mahmoudhamdy96",
+  projects: {
+    hr:    { live: "", repo: "", post: "" },
+    sales: { live: "", repo: "", post: "" },
+    churn: { live: "", repo: "", post: "" }
+  }
+};
+
+document.querySelectorAll('[data-link]').forEach(function(a){
+  var v = CONFIG[a.dataset.link]; if (v) { a.href = v; a.hidden = false; }
+});
+document.querySelectorAll('[data-proj]').forEach(function(a){
+  var p = CONFIG.projects[a.dataset.proj]; var v = p && p[a.dataset.kind];
+  if (v) { a.href = v; a.hidden = false; }
+});
+
+var lb = document.getElementById('lb'), lbimg = document.getElementById('lbimg');
+document.querySelectorAll('[data-zoom]').forEach(function(b){
+  b.addEventListener('click', function(){
+    lbimg.src = b.dataset.zoom; lbimg.alt = b.querySelector('img').alt;
+    if (lb.showModal) lb.showModal();
+  });
+});
+lb.addEventListener('click', function(e){ if (e.target === lb) lb.close(); });
+
+var copy = document.getElementById('copy'), addr = document.getElementById('addr');
+copy.addEventListener('click', function(){
+  var done = function(){ copy.textContent = 'Copied'; setTimeout(function(){ copy.textContent = 'Copy email'; }, 1800); };
+  var fallback = function(){
+    var r = document.createRange(); r.selectNodeContents(addr);
+    var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+  };
+  try { navigator.clipboard.writeText(addr.textContent).then(done, fallback); } catch (e) { fallback(); }
+});
+</script>
